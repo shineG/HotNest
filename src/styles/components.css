@@ -174,11 +174,29 @@
 
 @media screen and (max-width: 768px) {
     .hero__title {
-        font-size: 2.25rem;
+        font-size: 2rem;
+    }
+
+    .hero__subtitle {
+        font-size: 1.1rem;
     }
 
     .hero--compact .hero__title {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero__title {
+        font-size: 1.6rem;
+    }
+
+    .hero__subtitle {
+        font-size: 1rem;
+    }
+
+    .hero--compact .hero__title {
+        font-size: 1.3rem;
     }
 }
 

@@ -95,6 +95,10 @@
         display: block;
     }
 
+    .header-logo-img {
+        max-height: 64px;
+    }
+
     .site-nav {
         display: none;
         position: absolute;
