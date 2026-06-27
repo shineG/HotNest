@@ -1,0 +1,18 @@
+---
+import { partners } from "../data/partners";
+---
+
+<div class="logo-grid logo-grid--partners">
+    {
+        partners.map((partner) => (
+            <div class="logo-item">
+                <img
+                    src={partner.src}
+                    alt={partner.name}
+                    title={partner.name}
+                    loading="lazy"
+                />
+            </div>
+        ))
+    }
+</div>

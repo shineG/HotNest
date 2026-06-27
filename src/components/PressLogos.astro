@@ -1,0 +1,25 @@
+---
+import { pressLogos } from "../data/press";
+---
+
+<div class="logo-grid">
+    {
+        pressLogos.map((item) => (
+            <a
+                class="logo-item js-press-link"
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={item.name}
+                aria-label={item.name}
+            >
+                <img
+                    src={item.src}
+                    alt={item.name}
+                    loading="lazy"
+                    class="js-press-logo"
+                />
+            </a>
+        ))
+    }
+</div>

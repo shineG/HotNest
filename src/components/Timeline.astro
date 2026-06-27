@@ -1,0 +1,55 @@
+---
+import { timeline } from "../data/timeline";
+---
+
+<div class="timeline-carousel">
+    <button class="timeline-nav timeline-nav--prev" aria-label="Previous">
+        <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M19 12H5M12 19l-7-7 7-7"></path></svg
+        >
+    </button>
+
+    <div class="timeline-carousel__track-wrapper">
+        <div class="timeline-carousel__track" id="timelineTrack">
+            {
+                timeline.map((event, index) => (
+                    <div
+                        class={`timeline-item ${index % 2 === 0 ? "is-odd" : "is-even"} fade-in`}
+                        style={`transition-delay: ${index * 150}ms; -webkit-transition-delay: ${index * 150}ms;`}
+                    >
+                        <article class="timeline-card">
+                            <span class="timeline-card__year">
+                                {event.period}
+                            </span>
+                            <h3 class="timeline-card__title">{event.title}</h3>
+                            <p class="timeline-card__desc">
+                                {event.description}
+                            </p>
+                        </article>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+
+    <button class="timeline-nav timeline-nav--next" aria-label="Next">
+        <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"></path></svg
+        >
+    </button>
+</div>

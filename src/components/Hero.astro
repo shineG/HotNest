@@ -1,0 +1,90 @@
+---
+interface Slide {
+    title?: string;
+    subtitle?: string;
+    backgroundImage: string;
+}
+
+interface Props {
+    title?: string;
+    subtitle?: string;
+    backgroundImage?: string;
+    compact?: boolean;
+    ratio?: "21-9";
+    slides?: Slide[];
+}
+
+const {
+    title = "",
+    subtitle,
+    backgroundImage = "/images/hero/hero-bg.jpg",
+    compact = false,
+    ratio,
+    slides,
+} = Astro.props;
+
+// If slides are provided, use them. Otherwise, construct a single slide from the direct props.
+const displaySlides: Slide[] = slides || [
+    {
+        title,
+        subtitle,
+        backgroundImage,
+    },
+];
+---
+
+<section
+    class:list={[
+        "hero",
+        {
+            "hero--compact": compact,
+            "hero--slideshow": displaySlides.length > 1,
+            "hero--ratio-21-9": ratio === "21-9",
+        },
+    ]}
+>
+    <div class="hero__slides">
+        {
+            displaySlides.map((slide, index) => (
+                <div
+                    class:list={["hero-slide", { "is-active": index === 0 }]}
+                    data-index={index}
+                >
+                    <img
+                        class="hero__bg"
+                        src={slide.backgroundImage}
+                        alt=""
+                        role="presentation"
+                    />
+                    <div class="hero__overlay" aria-hidden="true" />
+                    <div class="hero__content">
+                        {slide.title && (
+                            <h1 class="hero__title">{slide.title}</h1>
+                        )}
+                        {slide.subtitle && (
+                            <p class="hero__subtitle">{slide.subtitle}</p>
+                        )}
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+    {
+        displaySlides.length > 1 && (
+            <>
+                <button
+                    class="hero__nav-btn hero__nav-prev"
+                    aria-label="Previous slide"
+                >
+                    <span class="hero__nav-icon" />
+                </button>
+                <button
+                    class="hero__nav-btn hero__nav-next"
+                    aria-label="Next slide"
+                >
+                    <span class="hero__nav-icon" />
+                </button>
+            </>
+        )
+    }
+</section>

@@ -1,0 +1,249 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import StatsGrid from "../components/StatsGrid.astro";
+import PartnerLogos from "../components/PartnerLogos.astro";
+
+// =========================================================================
+// SERVICES SECTION LAYOUT SELECTOR:
+// 1: Classic Alternating Columns (Wix-style alternating left/right layout)
+// 2: Modern Tech Cards Grid (Stripe/OpenAI style 3-column elegant cards)
+// 3: High-end Split Layout (Apple/Linear style left-sticky text, right-side rows)
+// =========================================================================
+const servicesLayout: any = 2;
+
+// Image paths constants to avoid cache issues and ensure correct mapping
+const IMAGE_BASE = "/images/services";
+const IMG_JOINT_VENTURE = `${IMAGE_BASE}/joint-venture.jpg?v=2`;
+const IMG_COMPANY_BUILDING = `${IMAGE_BASE}/company-building.jpg?v=2`;
+const IMG_PROTOTYPE_PRODUCTION = `${IMAGE_BASE}/warehouse-final.jpg?v=unique`; // New unique filename to bypass all cache
+
+const services = [
+    {
+        title: "Joint Venture formation and Buy Outs",
+        description:
+            "Hotnest Partners with some of Asia's leading investment funds to create lasting value in local markets.",
+        image: IMG_JOINT_VENTURE,
+        imageAlt: "Joint venture partnership",
+    },
+    {
+        title: "Company Building and Partnerships",
+        description:
+            "Next to developing sustainable companies, Hotnest also assists selected firms to become their exclusive, long term partner for Asian and European markets.",
+        image: IMG_COMPANY_BUILDING,
+        imageAlt: "Company building",
+    },
+    {
+        title: "Boost From Prototype To Production",
+        description:
+            "We unlock access to the magnificent supply chain resource in Asia through unique digital tools and expert process know-how.",
+        image: IMG_PROTOTYPE_PRODUCTION,
+        imageAlt: "Prototype to production supply chain",
+    },
+];
+
+const heroSlides = [
+    {
+        title: "Bridging Europe and Asia",
+        subtitle: "Scaling technology companies between Europe and Asia",
+        backgroundImage: "/images/hero/hero-bg.jpg",
+    },
+    {
+        title: "Data and AI Driven",
+        subtitle:
+            "From deal sourcing, logistics to brand scaling, we use our proprietary Hotnest AI system at every step of the value chain to serve our partners.",
+        backgroundImage: "/images/hero/hero-bg.png",
+    },
+];
+---
+
+<BaseLayout
+    title="Home | HotNest Technology"
+    description="Hotnest Technology is an AI driven technology group bridging Europe and Asia, scaling sustainable tech companies across markets."
+    currentPath="/"
+>
+    <!-- Unified Hero Slideshow with Crossfade Parallax (Wix-style) -->
+    <Hero slides={heroSlides} ratio="21-9" />
+
+    <!-- Vision Section -->
+    <section class="section section--vision">
+        <div class="container">
+            <SectionHeading
+                label="Vision"
+                title="We are changing the way technology companies grow around the world"
+            />
+            <div class="vision-text fade-in">
+                <p>
+                    Hotnest Technology is an AI driven, technology group,
+                    bridging Europe and Asia. Sustainable European tech
+                    companies, a massive growing Asian Middle Class and growing
+                    Asian high tech companies, make the perfect fit to change
+                    the lives of billions for the better.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section section--alt section--services">
+        <div class="container">
+            {
+                servicesLayout !== 3 && (
+                    <div class="services-header fade-in">
+                        <SectionHeading label="Services" />
+                        <p class="services-text">
+                            We use cutting edge data science to scale companies
+                            in Asia and Europe. Hotnest achieves this through
+                            targeted Buy-outs, Joint Ventures, Partnerships and
+                            building our own brands. We also provide agile,
+                            cost-effective solutions to bring your innovation to
+                            scale as well.
+                        </p>
+                    </div>
+                )
+            }
+
+            {
+                servicesLayout === 1 && (
+                    <div class="services-alt-layout">
+                        {services.map((item, index) => (
+                            <div
+                                class={`service-row ${index % 2 === 1 ? "service-row--reverse" : ""} fade-in`}
+                                style={`transition-delay: ${index * 100}ms;`}
+                            >
+                                <div class="service-row__content">
+                                    <span class="service-row__number">
+                                        0{index + 1}
+                                    </span>
+                                    <h3 class="service-row__title">
+                                        {item.title}
+                                    </h3>
+                                    <p class="service-row__desc">
+                                        {item.description}
+                                    </p>
+                                </div>
+                                <div class="service-row__image-wrapper">
+                                    <img
+                                        src={item.image}
+                                        alt={item.imageAlt}
+                                        class="service-row__image"
+                                    />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                )
+            }
+
+            {
+                servicesLayout === 2 && (
+                    <div class="services-cards-layout">
+                        {services.map((item, index) => (
+                            <div
+                                class="service-card-modern fade-in"
+                                style={`transition-delay: ${index * 150}ms;`}
+                                data-card-index={index}
+                            >
+                                <div class="service-card-modern__image-wrapper">
+                                    <img
+                                        src={item.image}
+                                        alt={item.imageAlt}
+                                        class="service-card-modern__image"
+                                    />
+                                    <span class="service-card-modern__number">
+                                        0{index + 1}
+                                    </span>
+                                </div>
+                                <div class="service-card-modern__body">
+                                    <h3 class="service-card-modern__title">
+                                        {item.title}
+                                    </h3>
+                                    <p class="service-card-modern__desc">
+                                        {item.description}
+                                    </p>
+                                </div>
+                            </div>
+                            </div>
+                        ))}
+                    </div>
+                )
+            }
+
+            {
+                servicesLayout === 3 && (
+                    <div class="services-split-layout">
+                        <div class="services-split-layout__left">
+                            <div class="services-split-layout__sticky">
+                                <span class="section-label">Services</span>
+                                <h2 class="services-split-layout__heading">
+                                    Services
+                                </h2>
+                                <p class="services-split-layout__lead">
+                                    We use cutting edge data science to scale
+                                    companies in Asia and Europe. Hotnest
+                                    achieves this through targeted Buy-outs,
+                                    Joint Ventures, Partnerships and building
+                                    our own brands. We also provide agile,
+                                    cost-effective solutions to bring your
+                                    innovation to scale as well.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="services-split-layout__right">
+                            {services.map((item, index) => (
+                                <div
+                                    class="service-stack-item fade-in"
+                                    style={`transition-delay: ${index * 100}ms;`}
+                                >
+                                    <div class="service-stack-item__header">
+                                        <span class="service-stack-item__number">
+                                            0{index + 1}
+                                        </span>
+                                        <h3 class="service-stack-item__title">
+                                            {item.title}
+                                        </h3>
+                                    </div>
+                                    <div class="service-stack-item__body">
+                                        <p class="service-stack-item__desc">
+                                            {item.description}
+                                        </p>
+                                        <div class="service-stack-item__img-wrapper">
+                                            <img
+                                                src={item.image}
+                                                alt={item.imageAlt}
+                                                class="service-stack-item__img"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )
+            }
+        </div>
+    </section>
+
+    <!-- Numbers Section -->
+    <section class="section section--dark section--numbers">
+        <div class="container">
+            <SectionHeading title="HotNest in Numbers" dark />
+            <StatsGrid />
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="section section--alt">
+        <div class="container">
+            <div class="partners-header fade-in">
+                <SectionHeading label="Partners" title="Partners and Customers" />
+                <p class="partners-text">
+                    Hotnest partners with some of the world's leading companies and
+                    funds to create long lasting value between Europe and Asia.
+                </p>
+            </div>
+            <PartnerLogos />
+        </div>
+    </section>
+</BaseLayout>

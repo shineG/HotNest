@@ -1,0 +1,15 @@
+---
+interface Props {
+    label: string;
+    title?: string;
+    dark?: boolean;
+    centered?: boolean;
+}
+
+const { label, title, dark = false, centered = false } = Astro.props;
+---
+
+<div class:list={["fade-in", { "section-heading--centered": centered }]}>
+    <span class="section-label">{label}</span>
+    {title && <h2>{title}</h2>}
+</div>

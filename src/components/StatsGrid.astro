@@ -1,0 +1,20 @@
+---
+import { stats } from "../data/stats";
+---
+
+<div class="stats-grid">
+    {
+        stats.map((stat, index) => (
+            <div class="stat-item fade-in" style={`--delay: ${index * 150}ms;`}>
+                <div class="stat-item__visual">
+                    <span class="stat-item__value">{stat.value}</span>
+                    <div class="stat-item__line-wrapper">
+                        <div class="stat-item__line-thick" />
+                        <div class="stat-item__line-thin" />
+                    </div>
+                </div>
+                <span class="stat-item__label">{stat.label}</span>
+            </div>
+        ))
+    }
+</div>

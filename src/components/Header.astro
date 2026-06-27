@@ -1,0 +1,48 @@
+---
+import { navigation } from "../data/navigation";
+
+interface Props {
+    currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+function isActive(href: string): boolean {
+    if (href === "/") return currentPath === "/" || currentPath === "";
+    return currentPath.startsWith(href);
+}
+---
+
+<header class="site-header" id="site-header">
+    <div class="container site-header__inner">
+        <a href="/" class="site-header__logo" aria-label="HotNest Home">
+            <img
+                src="/images/logo/logo.png"
+                alt="HotNest Logo"
+                class="header-logo-img"
+            />
+        </a>
+        <button
+            type="button"
+            class="site-header__toggle"
+            id="nav-toggle"
+            aria-expanded="false"
+            aria-controls="site-nav"
+            aria-label="Toggle navigation"
+        >
+            ☰
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+            {
+                navigation.map((item) => (
+                    <a
+                        href={item.href}
+                        class:list={{ "is-active": isActive(item.href) }}
+                    >
+                        {item.label}
+                    </a>
+                ))
+            }
+        </nav>
+    </div>
+</header>

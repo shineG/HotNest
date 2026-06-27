@@ -1,0 +1,118 @@
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--header-height);
+    background-color: transparent;
+    -webkit-transition:
+        background-color var(--transition-medium),
+        box-shadow var(--transition-medium);
+    transition:
+        background-color var(--transition-medium),
+        box-shadow var(--transition-medium);
+}
+
+.site-header.is-scrolled {
+    background-color: var(--color-header-bg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.site-header__inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    height: var(--header-height);
+}
+
+.site-header__logo {
+    text-decoration: none !important;
+    color: var(
+        --color-text-on-dark
+    ) !important; /* Forces logo link to always stay white */
+}
+
+.site-header__logo:hover,
+.site-header__logo:focus {
+    color: var(
+        --color-text-on-dark
+    ) !important; /* Disables any hover color shift */
+    text-decoration: none !important;
+}
+
+.header-logo-img {
+    display: block;
+    height: auto;
+    max-height: 96px; /* Adjusted to a balanced size */
+    width: auto;
+    transform: translateY(
+        -5px
+    ); /* Optical adjustment to move logo slightly up */
+}
+
+.site-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 32px;
+}
+
+.site-nav a {
+    color: var(--color-text-on-dark);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a:focus,
+.site-nav a.is-active {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+.site-header__toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--color-text-on-dark);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 8px;
+}
+
+@media screen and (max-width: 768px) {
+    .site-header__toggle {
+        display: block;
+    }
+
+    .site-nav {
+        display: none;
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        background-color: var(--color-header-bg);
+        padding: 16px 24px 24px;
+        gap: 16px;
+    }
+
+    .site-nav.is-open {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+}

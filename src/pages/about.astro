@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import Timeline from "../components/Timeline.astro";
+import PressLogos from "../components/PressLogos.astro";
+---
+
+<BaseLayout
+    title="About | Hotnest"
+    description="Learn about Hotnest Technology's journey scaling companies between Asia and Europe with AI and sustainability."
+    currentPath="/about"
+>
+    <Hero
+        title="Vision"
+        subtitle="The Hotnest team focuses on scaling companies between Asia and Europe. With a strong focus on AI and sustainability, Hotnest is a long term partner to European and Asian companies. We are working on shaping the future of the Asian Middle Class and upgrading Europe's technology. Our team combines international experience in scaling digital businesses, data science, finance and brand building."
+        backgroundImage="/images/hero/about-hero.jpg"
+        ratio="21-9"
+    />
+
+    <section class="section section--alt section--mission">
+        <div class="container">
+            <SectionHeading
+                label="Mission"
+                title="Redefining the Way Brands Grow"
+                centered
+            />
+            <div class="mission-text fade-in">
+                <p>
+                    Hotnest focuses on scaling European and Asian companies
+                    sustainably and long lasting for the fast growing Asian
+                    middle class and the developed European market. Especially
+                    categories like clean tech, industrial automation and
+                    consumer goods, have a huge growth potential between Asia
+                    and Europe.
+                </p>
+                <p>
+                    With almost a decade of experience in brand building, data
+                    science, financing and sourcing, Hotnest is best suited to
+                    be a long lasting partner to both European consumer brands
+                    and Asian consumers.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <SectionHeading label="Growth" title="Our Journey" centered />
+            <Timeline />
+        </div>
+    </section>
+
+    <section class="section section--alt">
+        <div class="container">
+            <SectionHeading
+                label="Media"
+                title="HotNest In the Press"
+                centered
+            />
+            <PressLogos />
+        </div>
+    </section>
+</BaseLayout>

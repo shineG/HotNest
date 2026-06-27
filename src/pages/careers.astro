@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { contactEmail } from '../data/navigation';
+---
+
+<BaseLayout
+  title="Careers | Hotnest"
+  description="Join Hotnest Technology — data scientists, scaling experts, logistics, finance and deal sourcing roles across Europe and Asia."
+  currentPath="/careers"
+>
+  <Hero title="WE BRIDGE EAST AND WEST" subtitle="Join Us for the Ride" compact />
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading label="Location" title="We're based between Europe and Asia" />
+      <p class="fade-in">
+        Join us remotely or at one of our locations in Europe or Asia
+      </p>
+      <p class="fade-in">
+        We are always looking for data scientists, scaling and logistics experts as well as finance and
+        deal sourcing talents. Send us your CV
+      </p>
+      <div class="cta-block" style="padding-top: 32px;">
+        <a href={`mailto:${contactEmail}`} class="btn fade-in">Send Your CV</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

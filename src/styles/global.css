@@ -1,0 +1,200 @@
+@import "./variables.css";
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-heading);
+    line-height: 1.2;
+    margin: 0 0 1rem;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2.75rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+p {
+    margin: 0 0 1rem;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--section-padding-x);
+    padding-right: var(--section-padding-x);
+}
+
+.section {
+    padding-top: var(--section-padding-y);
+    padding-bottom: var(--section-padding-y);
+}
+
+.section--alt {
+    background-color: var(--color-bg-alt);
+}
+
+.section--dark {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-on-dark);
+}
+
+.section-label {
+    display: block;
+    font-size: 0.875rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+}
+
+.section-heading--centered {
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid var(--color-accent);
+    color: var(--color-text-on-dark);
+    background-color: transparent;
+    cursor: pointer;
+    -webkit-transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast);
+    transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast);
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: var(--color-accent);
+    color: var(--color-bg-dark);
+    text-decoration: none;
+}
+
+.btn--light {
+    border-color: var(--color-text-on-dark);
+    color: var(--color-text-on-dark);
+}
+
+.btn--light:hover,
+.btn--light:focus {
+    background-color: var(--color-text-on-dark);
+    color: var(--color-bg-dark);
+}
+
+/* Fade-in animation — transform + opacity only (GPU-friendly, widely supported) */
+.fade-in {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+}
+
+.fade-in.is-visible {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition:
+        opacity 0.6s ease,
+        -webkit-transform 0.6s ease;
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .fade-in,
+    .fade-in.is-visible {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+        -webkit-transition: none;
+        transition: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --section-padding-y: 48px;
+        --section-padding-x: 16px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.75rem;
+    }
+}
