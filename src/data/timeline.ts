@@ -30,7 +30,7 @@ export const timeline: TimelineEvent[] = [
       "Hotnest partners with some of Europe's oldest and most renowned SME consumer brands to scale in the Chinese market. Successfully scales over 50 brands to 50 Million USD GMV. Integrates AI system with strong brand building team.",
   },
   {
-    period: "2022",
+    period: "2022-Now",
     title: "Launch of JV and Buy Out Business",
     description:
       "Hotnest Technology partners with some of Asia's and Europe's leading financial firms to use technology, brand building and capital, to scale high quality European and Asian companies in their respective markets.",
