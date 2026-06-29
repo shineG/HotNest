@@ -745,8 +745,14 @@
 .timeline-nav--prev {
     left: 0;
 }
+
 .timeline-nav--next {
     right: 0;
+}
+
+.timeline-carousel__track.is-dragging {
+    scroll-snap-type: none;
+    cursor: grabbing;
 }
 
 @media screen and (max-width: 768px) {

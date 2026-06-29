@@ -230,4 +230,54 @@
       countEls[k].innerText = parseInt(val, 10).toLocaleString();
     }
   }
+
+  /* Timeline Carousel Navigation & Drag-to-Scroll (ES5) */
+  var timelineTrack = document.getElementById("timelineTrack");
+  if (timelineTrack) {
+    var prevBtn = document.querySelector(".timeline-nav--prev");
+    var nextBtn = document.querySelector(".timeline-nav--next");
+    var scrollAmount = 380; // Card width + gap
+
+    /* Arrow Navigation */
+    if (prevBtn) {
+      prevBtn.addEventListener("click", function () {
+        timelineTrack.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", function () {
+        timelineTrack.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      });
+    }
+
+    /* Mouse Drag-to-Scroll */
+    var isDragging = false;
+    var startX;
+    var scrollLeft;
+
+    timelineTrack.addEventListener("mousedown", function (e) {
+      isDragging = true;
+      timelineTrack.classList.add("is-dragging");
+      startX = e.pageX - timelineTrack.offsetLeft;
+      scrollLeft = timelineTrack.scrollLeft;
+      // Prevent text selection during drag
+      e.preventDefault();
+    });
+
+    window.addEventListener("mousemove", function (e) {
+      if (!isDragging) return;
+      e.preventDefault();
+      var x = e.pageX - timelineTrack.offsetLeft;
+      var walk = (x - startX) * 2; // Multiply by 2 to speed up scrolling
+      timelineTrack.scrollLeft = scrollLeft - walk;
+    });
+
+    window.addEventListener("mouseup", function () {
+      if (isDragging) {
+        isDragging = false;
+        timelineTrack.classList.remove("is-dragging");
+      }
+    });
+  }
 })();
