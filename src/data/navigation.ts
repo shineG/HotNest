@@ -8,4 +8,4 @@ export const navigation: NavItem[] = [
   { label: "About", href: "/about" },
 ];
 
-export const contactEmail = "info@hotnest.net";
+export const contactEmail = "postmaster@hotnest.net";
